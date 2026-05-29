@@ -1,0 +1,10 @@
+Banking System Console
+
+# Terminal 1 — Backend
+cd backend
+javac *.java
+java -cp . BankServer
+
+# Terminal 2 — Frontend
+cd frontend
+npx live-server --port=3000
