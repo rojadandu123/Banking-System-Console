@@ -1,6 +1,3 @@
-// Since this is plain Java backend (no HTTP server),
-// we simulate the banking system fully in JavaScript
-// for the frontend demo.
 
 let accounts = [];
 let counter  = 1000;
