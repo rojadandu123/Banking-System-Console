@@ -249,7 +249,7 @@ function loadAccounts() {
 
     container.innerHTML = `
       <div class="empty-box">
-        😔 No Accounts Available
+         No Accounts Available
       </div>
     `;
 
