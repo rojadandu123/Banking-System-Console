@@ -1,248 +1,107 @@
-console.log("Banking System Loaded");
+// Since this is plain Java backend (no HTTP server),
+// we simulate the banking system fully in JavaScript
+// for the frontend demo.
 
 let accounts = [];
-let accCounter = 1000;
+let counter  = 1000;
 
-// CREATE ACCOUNT
-function createAccount(){
+// --- Create Account ---
+function createAccount() {
+  const name    = document.getElementById('create-name').value.trim();
+  const deposit = parseFloat(document.getElementById('create-deposit').value);
+  const type    = document.getElementById('create-type').value;
+  const msg     = document.getElementById('create-msg');
 
-  const name =
-    document.getElementById("create-name").value.trim();
+  if (!name)          { msg.style.color='red'; msg.textContent='Enter your name!'; return; }
+  if (isNaN(deposit) || deposit <= 0) { msg.style.color='red'; msg.textContent='Enter valid deposit!'; return; }
 
-  const deposit =
-    parseFloat(
-      document.getElementById("create-deposit").value
-    );
+  counter++;
+  const accNumber = 'ACC' + counter;
+  accounts.push({ accNumber, name, balance: deposit, type });
 
-  const type =
-    document.getElementById("create-type").value;
+  msg.style.color = 'green';
+  msg.textContent = `Account created! Your account number: ${accNumber}`;
 
-  const msg =
-    document.getElementById("create-msg");
-
-  if(name === ""){
-    msg.style.color = "red";
-    msg.innerHTML = "Enter customer name";
-    return;
-  }
-
-  if(isNaN(deposit) || deposit <= 0){
-    msg.style.color = "red";
-    msg.innerHTML = "Enter valid deposit";
-    return;
-  }
-
-  accCounter++;
-
-  const accountNumber = "ACC" + accCounter;
-
-  accounts.push({
-    accountNumber,
-    name,
-    balance:deposit,
-    type
-  });
-
-  msg.style.color = "green";
-
-  msg.innerHTML =
-    "Account created successfully! Account Number: "
-    + accountNumber;
-
-  document.getElementById("create-name").value = "";
-  document.getElementById("create-deposit").value = "";
+  document.getElementById('create-name').value    = '';
+  document.getElementById('create-deposit').value = '';
 }
 
-// DEPOSIT
-function depositMoney(){
+// --- Deposit ---
+function deposit() {
+  const accNo  = document.getElementById('dep-acc').value.trim();
+  const amount = parseFloat(document.getElementById('dep-amt').value);
+  const msg    = document.getElementById('dep-msg');
 
-  const accNo =
-    document.getElementById("dep-acc").value.trim();
-
-  const amount =
-    parseFloat(
-      document.getElementById("dep-amt").value
-    );
-
-  const msg =
-    document.getElementById("dep-msg");
-
-  const acc =
-    accounts.find(a => a.accountNumber === accNo);
-
-  if(!acc){
-    msg.style.color = "red";
-    msg.innerHTML = "Account not found";
-    return;
-  }
-
-  if(isNaN(amount) || amount <= 0){
-    msg.style.color = "red";
-    msg.innerHTML = "Enter valid amount";
-    return;
-  }
+  const acc = accounts.find(a => a.accNumber === accNo);
+  if (!acc)            { msg.style.color='red'; msg.textContent='Account not found!'; return; }
+  if (isNaN(amount) || amount <= 0) { msg.style.color='red'; msg.textContent='Enter valid amount!'; return; }
 
   acc.balance += amount;
-
-  msg.style.color = "green";
-
-  msg.innerHTML =
-    "₹" + amount +
-    " deposited successfully";
+  msg.style.color = 'green';
+  msg.textContent = `Deposited Rs.${amount}. New balance: Rs.${acc.balance}`;
 }
 
-// WITHDRAW
-function withdrawMoney(){
+// --- Withdraw ---
+function withdraw() {
+  const accNo  = document.getElementById('wit-acc').value.trim();
+  const amount = parseFloat(document.getElementById('wit-amt').value);
+  const msg    = document.getElementById('wit-msg');
 
-  const accNo =
-    document.getElementById("with-acc").value.trim();
-
-  const amount =
-    parseFloat(
-      document.getElementById("with-amt").value
-    );
-
-  const msg =
-    document.getElementById("with-msg");
-
-  const acc =
-    accounts.find(a => a.accountNumber === accNo);
-
-  if(!acc){
-    msg.style.color = "red";
-    msg.innerHTML = "Account not found";
-    return;
-  }
-
-  if(amount > acc.balance){
-    msg.style.color = "red";
-    msg.innerHTML = "Insufficient balance";
-    return;
-  }
+  const acc = accounts.find(a => a.accNumber === accNo);
+  if (!acc)   { msg.style.color='red'; msg.textContent='Account not found!'; return; }
+  if (isNaN(amount) || amount <= 0) { msg.style.color='red'; msg.textContent='Enter valid amount!'; return; }
+  if (amount > acc.balance) { msg.style.color='red'; msg.textContent='Insufficient balance!'; return; }
 
   acc.balance -= amount;
-
-  msg.style.color = "green";
-
-  msg.innerHTML =
-    "₹" + amount +
-    " withdrawn successfully";
+  msg.style.color = 'green';
+  msg.textContent = `Withdrawn Rs.${amount}. New balance: Rs.${acc.balance}`;
 }
 
-// TRANSFER
-function transferMoney(){
+// --- Transfer ---
+function transfer() {
+  const fromNo = document.getElementById('trans-from').value.trim();
+  const toNo   = document.getElementById('trans-to').value.trim();
+  const amount = parseFloat(document.getElementById('trans-amt').value);
+  const msg    = document.getElementById('trans-msg');
 
-  const fromAcc =
-    document.getElementById("from-acc").value.trim();
+  const from = accounts.find(a => a.accNumber === fromNo);
+  const to   = accounts.find(a => a.accNumber === toNo);
 
-  const toAcc =
-    document.getElementById("to-acc").value.trim();
+  if (!from) { msg.style.color='red'; msg.textContent='From account not found!'; return; }
+  if (!to)   { msg.style.color='red'; msg.textContent='To account not found!'; return; }
+  if (isNaN(amount) || amount <= 0) { msg.style.color='red'; msg.textContent='Enter valid amount!'; return; }
+  if (amount > from.balance) { msg.style.color='red'; msg.textContent='Insufficient balance!'; return; }
 
-  const amount =
-    parseFloat(
-      document.getElementById("transfer-amt").value
-    );
-
-  const msg =
-    document.getElementById("transfer-msg");
-
-  const sender =
-    accounts.find(a => a.accountNumber === fromAcc);
-
-  const receiver =
-    accounts.find(a => a.accountNumber === toAcc);
-
-  if(!sender){
-    msg.style.color = "red";
-    msg.innerHTML = "Sender account not found";
-    return;
-  }
-
-  if(!receiver){
-    msg.style.color = "red";
-    msg.innerHTML = "Receiver account not found";
-    return;
-  }
-
-  if(amount > sender.balance){
-    msg.style.color = "red";
-    msg.innerHTML = "Insufficient balance";
-    return;
-  }
-
-  sender.balance -= amount;
-  receiver.balance += amount;
-
-  msg.style.color = "green";
-
-  msg.innerHTML =
-    "₹" + amount +
-    " transferred successfully";
+  from.balance -= amount;
+  to.balance   += amount;
+  msg.style.color = 'green';
+  msg.textContent = `Transferred Rs.${amount} from ${fromNo} to ${toNo} successfully!`;
 }
 
-// CHECK BALANCE
-function checkBalance(){
+// --- Check Balance ---
+function checkBalance() {
+  const accNo = document.getElementById('bal-acc').value.trim();
+  const msg   = document.getElementById('bal-msg');
 
-  const accNo =
-    document.getElementById("bal-acc").value.trim();
+  const acc = accounts.find(a => a.accNumber === accNo);
+  if (!acc) { msg.style.color='red'; msg.textContent='Account not found!'; return; }
 
-  const msg =
-    document.getElementById("bal-msg");
-
-  const acc =
-    accounts.find(a => a.accountNumber === accNo);
-
-  if(!acc){
-    msg.style.color = "red";
-    msg.innerHTML = "Account not found";
-    return;
-  }
-
-  msg.style.color = "green";
-
-  msg.innerHTML =
-    "Current Balance: ₹" + acc.balance;
+  msg.style.color = 'green';
+  msg.textContent = `Balance for ${acc.name}: Rs.${acc.balance}`;
 }
 
-// SHOW ACCOUNTS
-function showAccounts(){
-
-  const container =
-    document.getElementById("accounts-list");
-
-  if(accounts.length === 0){
-    container.innerHTML =
-      "<p>No accounts available</p>";
+// --- Load All Accounts ---
+function loadAccounts() {
+  const container = document.getElementById('accounts-list');
+  if (accounts.length === 0) {
+    container.innerHTML = '<p>No accounts yet. Create one first!</p>';
     return;
   }
-
-  container.innerHTML = "";
-
-  accounts.forEach(acc => {
-
-    container.innerHTML += `
-
-      <div class="account">
-
-        <h3>${acc.name}</h3>
-
-        <p>
-          <b>Account:</b>
-          ${acc.accountNumber}
-        </p>
-
-        <p>
-          <b>Type:</b>
-          ${acc.type}
-        </p>
-
-        <p>
-          <b>Balance:</b>
-          ₹${acc.balance}
-        </p>
-
-      </div>
-
-    `;
-  });
+  container.innerHTML = accounts.map(a => `
+    <div class="account-card">
+      <h3>${a.name} — ${a.accNumber}</h3>
+      <p>Type: ${a.type}</p>
+      <p>Balance: Rs.${a.balance}</p>
+    </div>
+  `).join('');
 }
