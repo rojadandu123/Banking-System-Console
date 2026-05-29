@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Banking System</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🏦 Banking Console System</h1>
+  <p>Manage your bank accounts easily</p>
+</header>
+
+<main>
+
+  <!-- CREATE ACCOUNT -->
+  <section class="card">
+    <h2>Create Account</h2>
+
+    <input id="create-name" placeholder="Full Name">
+
+    <input id="create-deposit"
+           type="number"
+           placeholder="Initial Deposit">
+
+    <select id="create-type">
+      <option value="Savings">Savings</option>
+      <option value="Current">Current</option>
+    </select>
+
+    <button onclick="createAccount()">
+      Create Account
+    </button>
+
+    <p class="msg" id="create-msg"></p>
+  </section>
+
+  <!-- DEPOSIT -->
+  <section class="card">
+
+    <h2>Deposit Money</h2>
+
+    <input id="dep-acc"
+           placeholder="Account Number">
+
+    <input id="dep-amt"
+           type="number"
+           placeholder="Amount">
+
+    <button onclick="depositMoney()">
+      Deposit
+    </button>
+
+    <p class="msg" id="dep-msg"></p>
+
+  </section>
+
+  <!-- WITHDRAW -->
+  <section class="card">
+
+    <h2>Withdraw Money</h2>
+
+    <input id="with-acc"
+           placeholder="Account Number">
+
+    <input id="with-amt"
+           type="number"
+           placeholder="Amount">
+
+    <button onclick="withdrawMoney()">
+      Withdraw
+    </button>
+
+    <p class="msg" id="with-msg"></p>
+
+  </section>
+
+  <!-- TRANSFER -->
+  <section class="card">
+
+    <h2>Transfer Money</h2>
+
+    <input id="from-acc"
+           placeholder="From Account">
+
+    <input id="to-acc"
+           placeholder="To Account">
+
+    <input id="transfer-amt"
+           type="number"
+           placeholder="Amount">
+
+    <button onclick="transferMoney()">
+      Transfer
+    </button>
+
+    <p class="msg" id="transfer-msg"></p>
+
+  </section>
+
+  <!-- CHECK BALANCE -->
+  <section class="card">
+
+    <h2>Check Balance</h2>
+
+    <input id="bal-acc"
+           placeholder="Account Number">
+
+    <button onclick="checkBalance()">
+      Check Balance
+    </button>
+
+    <p class="msg" id="bal-msg"></p>
+
+  </section>
+
+  <!-- ACCOUNT LIST -->
+  <section class="card full">
+
+    <h2>All Accounts</h2>
+
+    <button onclick="showAccounts()">
+      Load Accounts
+    </button>
+
+    <div id="accounts-list"></div>
+
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>
