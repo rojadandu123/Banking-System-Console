@@ -1,78 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banking Console System</title>
-  <link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>🏦 Smart Banking System</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
 </head>
+
 <body>
 
+  <!-- HEADER -->
+
   <header>
-    <h1>Banking Console System</h1>
-    <p>Manage accounts easily</p>
+
+    <h1>🏦 Smart Banking System</h1>
+
+    <p>Manage Your Bank Accounts Easily & Securely</p>
+
+    <button onclick="toggleTheme()" class="theme-btn">
+      🌙 Toggle Theme
+    </button>
+
   </header>
+
+  <!-- MAIN -->
 
   <main>
 
-    <!-- Create Account -->
+    <!-- CREATE ACCOUNT -->
+
     <section class="card">
-      <h2>Create Account</h2>
-      <input id="create-name"    placeholder="Full Name" />
-      <input id="create-deposit" type="number" placeholder="Initial Deposit (Rs.)" />
+
+      <h2>📝 Create Account</h2>
+
+      <input
+        id="create-name"
+        type="text"
+        placeholder="👤 Enter Full Name"
+      />
+
+      <input
+        id="create-deposit"
+        type="number"
+        placeholder="💰 Initial Deposit"
+      />
+
       <select id="create-type">
-        <option value="savings">Savings</option>
-        <option value="current">Current</option>
+
+        <option value="Savings">💳 Savings Account</option>
+
+        <option value="Current">🏢 Current Account</option>
+
       </select>
-      <button onclick="createAccount()">Create Account</button>
+
+      <button onclick="createAccount()">
+        ➕ Create Account
+      </button>
+
       <p class="msg" id="create-msg"></p>
+
     </section>
 
-    <!-- Deposit -->
+    <!-- DEPOSIT -->
+
     <section class="card">
-      <h2>Deposit Money</h2>
-      <input id="dep-acc" placeholder="Account Number (e.g. ACC1001)" />
-      <input id="dep-amt" type="number" placeholder="Amount (Rs.)" />
-      <button onclick="deposit()">Deposit</button>
+
+      <h2>💰 Deposit Money</h2>
+
+      <input
+        id="dep-acc"
+        type="text"
+        placeholder="🏦 Account Number"
+      />
+
+      <input
+        id="dep-amt"
+        type="number"
+        placeholder="💵 Deposit Amount"
+      />
+
+      <button onclick="deposit()">
+        💸 Deposit
+      </button>
+
       <p class="msg" id="dep-msg"></p>
+
     </section>
 
-    <!-- Withdraw -->
+    <!-- WITHDRAW -->
+
     <section class="card">
-      <h2>Withdraw Money</h2>
-      <input id="wit-acc" placeholder="Account Number" />
-      <input id="wit-amt" type="number" placeholder="Amount (Rs.)" />
-      <button onclick="withdraw()">Withdraw</button>
+
+      <h2>💳 Withdraw Money</h2>
+
+      <input
+        id="wit-acc"
+        type="text"
+        placeholder="🏦 Account Number"
+      />
+
+      <input
+        id="wit-amt"
+        type="number"
+        placeholder="💸 Withdraw Amount"
+      />
+
+      <button onclick="withdraw()">
+        🏧 Withdraw
+      </button>
+
       <p class="msg" id="wit-msg"></p>
+
     </section>
 
-    <!-- Transfer -->
+    <!-- TRANSFER -->
+
     <section class="card">
-      <h2>Transfer Money</h2>
-      <input id="trans-from" placeholder="From Account Number" />
-      <input id="trans-to"   placeholder="To Account Number" />
-      <input id="trans-amt"  type="number" placeholder="Amount (Rs.)" />
-      <button onclick="transfer()">Transfer</button>
+
+      <h2>🔄 Transfer Money</h2>
+
+      <input
+        id="trans-from"
+        type="text"
+        placeholder="📤 From Account Number"
+      />
+
+      <input
+        id="trans-to"
+        type="text"
+        placeholder="📥 To Account Number"
+      />
+
+      <input
+        id="trans-amt"
+        type="number"
+        placeholder="💰 Transfer Amount"
+      />
+
+      <button onclick="transfer()">
+        🚀 Transfer
+      </button>
+
       <p class="msg" id="trans-msg"></p>
+
     </section>
 
-    <!-- Check Balance -->
+    <!-- CHECK BALANCE -->
+
     <section class="card">
-      <h2>Check Balance</h2>
-      <input id="bal-acc" placeholder="Account Number" />
-      <button onclick="checkBalance()">Check Balance</button>
+
+      <h2>📊 Check Balance</h2>
+
+      <input
+        id="bal-acc"
+        type="text"
+        placeholder="🏦 Account Number"
+      />
+
+      <button onclick="checkBalance()">
+        🔍 Check Balance
+      </button>
+
       <p class="msg" id="bal-msg"></p>
+
     </section>
 
-    <!-- All Accounts -->
+    <!-- ALL ACCOUNTS -->
+
     <section class="card">
-      <h2>All Accounts</h2>
-      <button onclick="loadAccounts()">Refresh List</button>
-      <div id="accounts-list"><p>Click Refresh to load accounts.</p></div>
+
+      <h2>👥 All Accounts</h2>
+
+      <button onclick="loadAccounts()">
+        🔄 Refresh Accounts
+      </button>
+
+      <div id="accounts-list">
+
+        <div class="empty-box">
+          😎 Click Refresh to Load Accounts
+        </div>
+
+      </div>
+
     </section>
 
   </main>
 
+  <!-- FOOTER -->
+
+  <footer>
+
+    
+
+  </footer>
+
+  <!-- SCRIPT -->
+
   <script src="app.js"></script>
+
 </body>
+
 </html>
