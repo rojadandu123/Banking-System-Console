@@ -1,131 +1,102 @@
-# Banking System Console
+# 🏦 Banking System Console
 
-## Overview
-Banking System Console is a Java-based application that simulates basic banking operations through a command-line interface. The project demonstrates Object-Oriented Programming (OOP) concepts and provides a simple way to manage bank accounts and transactions.
+A console-based Banking System application developed using **Java** and **Object-Oriented Programming (OOP)** concepts. The application allows users to perform core banking operations such as account creation, deposits, withdrawals, balance enquiries, and fund transfers.
 
-## Features
-- Create Account
-- Deposit Money
-- Withdraw Money
-- Check Balance
-- Transfer Money
-- Delete Account
-- View All Accounts
-- Exit System
+## 🚀 Features
 
-## Technologies Used
-- Java
-- Object-Oriented Programming (OOP)
-- ArrayList
-- VS Code
-- Git
-- GitHub
+* Create new bank accounts
+* Deposit money
+* Withdraw money
+* Check account balance
+* Transfer funds between accounts
+* Delete accounts
+* Exception handling for invalid operations
+* User-friendly console interface
 
-## 🗂️ Project Structure
+## 🛠️ Tech Stack
+
+### Backend
+
+* Java
+* OOP (Object-Oriented Programming)
+* Collections Framework
+* Exception Handling
+
+### Frontend
+
+* HTML
+* CSS
+* JavaScript
+
+## 📂 Project Structure
 
 ```text
 Banking-System-Console
 │
-├── src
-│   ├── Main.java
+├── backend
+│   ├── Account.java
 │   ├── Bank.java
-│   └── Account.java
+│   ├── BankServer.java
+│   └── Main.java
 │
-├── README.md
+├── frontend
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
 │
-└── .gitignore
+└── README.md
 ```
 
-## OOP Concepts Used
-- Classes
-- Objects
-- Encapsulation
-- Constructors
-- Methods
-- Data Abstraction
-- ArrayList
+## ▶️ How to Run
 
-## Files Description
-
-### Main.java
-- Contains the main menu-driven program.
-- Handles user input and banking operations.
-
-### Bank.java
-- Manages accounts.
-- Handles account creation, deletion, transfers, and account searches.
-
-### Account.java
-- Stores account details.
-- Handles deposits, withdrawals, balance checks, and PIN updates.
-
-## How to Run the Project
-
-### Compile
+### Backend
 
 ```bash
-javac src\Account.java src\Bank.java src\Main.java
+javac *.java
+java Main
 ```
 
-### Run
+### Frontend
 
-```bash
-java -cp src Main
-```
+1. Open the `frontend` folder.
+2. Open `index.html` using Live Server in VS Code.
+3. Use the banking interface to perform transactions.
 
-## Sample Operations
-1. Create a new bank account.
-2. Deposit money into an account.
-3. Withdraw money from an account.
-4. Check account balance.
-5. Transfer money between accounts.
-6. Delete an account.
-7. View all existing accounts.
+## 🎯 Functionalities
 
-## Git Commands Used
+### Account Management
 
-### Initialize Git
+* Create Account
+* Delete Account
+* View Account Details
 
-```bash
-git init
-```
+### Transactions
 
-### Add Files
+* Deposit Funds
+* Withdraw Funds
+* Transfer Funds
+* Check Balance
 
-```bash
-git add .
-```
+## 📸 Screenshots
 
-### Commit Changes
+### Banking Dashboard
 
-```bash
-git commit -m "Initial Banking System Project"
-```
+<img width="1918" height="866" alt="image" src="https://github.com/user-attachments/assets/5b98bc0f-d701-4994-968a-1da9b48260e0" />
 
-### Connect GitHub Repository
 
-```bash
-git remote add origin https://github.com/your-username/Banking-System-Console.git
-```
+### Transactions Page
 
-### Push Code
+<img width="1907" height="875" alt="image" src="https://github.com/user-attachments/assets/b7f23bd7-ead5-4117-9ef2-1d9558e88cbd" />
 
-```bash
-git branch -M main
-git push -u origin main
-```
 
-## Learning Outcomes
-- Java Programming Fundamentals
-- Object-Oriented Programming
-- Collection Framework (ArrayList)
-- Console Application Development
-- Git and GitHub Version Control
+## 🎯 Future Enhancements
 
-## Future Enhancements
-- Transaction History
-- File Handling
-- Database Integration
-- Java Swing GUI
-- Spring Boot Web Application
+* MySQL Database Integration
+* Transaction History Tracking
+* Interest Calculation Module
+* JavaFX/Swing GUI Version
+* Online Banking Features
 
+## 📜 License
+
+This project is developed for educational and portfolio purposes.
